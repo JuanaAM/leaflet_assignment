@@ -1,0 +1,24 @@
+---
+title: "Leaflet Map - Wonders Of The Ancient World"
+author: "Juana Arroyo"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Wonders Of The Ancient World
+
+```{r messages = FALSE, warning = FALSE,message=FALSE}
+library(leaflet)
+
+ancientWorldWonders<-data.frame(name=c("Great Pyramid of Giza", "Hanging Gardens of Babylon", "Statue of Zeus at Olympia", "Temple of Artemis at Ephesus", "Mausoleum at Halicarnassus", "Colossus of Rhodes", "Lighthouse of Alexandria"), lat=c(29.979175,32.5355, 37.637861, 37.949722, 37.0379, 36.451111, 31.213889),lng=c(31.134358, 44.4275, 21.63, 27.363889, 27.4241, 28.227778, 29.885556),pic=c("https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg", "https://upload.wikimedia.org/wikipedia/commons/a/ae/Hanging_Gardens_of_Babylon.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/66/Le_Jupiter_Olympien_ou_l%27art_de_la_sculpture_antique.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1d/Miniaturk_009.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5e/Mausoleum_at_Halicarnassus_at_the_Bodrum_Museum_of_Underwater_Archaeology.jpg", "https://upload.wikimedia.org/wikipedia/commons/5/5f/Colosse_de_Rhodes_%28Barclay%29.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/22/Lighthouse_-_Thiersch.png"))
+
+
+
+ancientWorldWonders %>% leaflet() %>% addTiles()%>% addCircleMarkers(popup = ~paste0(name,'<br>',"<img src='",pic,"' width='50px' height='50px'>" ))
+```
+
+Data taken from [Wikipedia](https://en.wikipedia.org/wiki/Seven_Wonders_of_the_Ancient_World)
